@@ -1,0 +1,132 @@
+.hamburger-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.hamburger-icon.collapsed span:first-child {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-icon.collapsed span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon.collapsed span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: #fff;
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.org-panel {
+    padding: 0.75rem 1rem;
+    margin-top: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.org-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.org-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.org-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #3366FF;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: #8a94a6;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .org-text,
+.sidebar.collapsed .dropdown-arrow,
+.sidebar.collapsed .section-title {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar.collapsed .nav-icon {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .org-selector {
+    justify-content: center;
+}
+
+.sidebar.collapsed .org-icon {
+    margin-right: 0;
+}
+
+.main-content {
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.shifted {
+    margin-left: 64px;
+}
+
+
