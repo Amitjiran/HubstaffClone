@@ -63,7 +63,7 @@ const LoginForm = () => {
         <div className="footer">
           <div className="signup">
             Don't have an account?&nbsp;
-            <a href="/signup">Get started</a>
+            <a href="/userregister">Get started</a>
           </div>
         </div>
       </div>
