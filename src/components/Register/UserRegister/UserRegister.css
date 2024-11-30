@@ -1,0 +1,297 @@
+.pvs-layout__main {
+    flex: 1;
+   
+  }
+  
+  .pvs-signup-minimalist__page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pvs-signup-minimalist__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .pvs-signup-minimalist__logo {
+    height: 24px;
+    width: auto;
+  }
+  
+  .pvs-signup-minimalist__signin {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .pvs-signup-minimalist__container {
+    flex: 1;
+    max-width: 480px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .pvs-signup-minimalist-top-block-group-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .pvs-signup-minimalist-top-block-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .pvs-signup-minimalist-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .badge-completed .pvs-signup-minimalist-badge {
+    background-color: #4CAF50;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+  }
+  
+  .badge-current .pvs-signup-minimalist-badge {
+    background-color: #2196F3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+  }
+  
+  .badge-inactive .pvs-signup-minimalist-badge {
+    background-color: #e5e5e5;
+    color: #666;
+  }
+  
+  .pvs-form__input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .pvs-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .pvs-form__input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .pvs-form__input:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    outline: none;
+  }
+  
+  .pvs-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #344767;
+  }
+  
+  /* Form sections spacing */
+  .pvs-form__row {
+    margin-bottom: 1.5rem;
+  }
+  
+  .pvs-form__row:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Submit button styling */
+  .pvs-button--primary {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .pvs-button--primary:hover {
+    background: linear-gradient(135deg, #1976D2, #1565C0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+  }
+  
+  /* Password input group specific styling */
+  .pvs-form__input--with-suffix {
+    position: relative;
+  }
+  
+  .pvs-form__input-suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  
+  .pvs-form__input-suffix:hover {
+    color: #2196F3;
+  }
+  
+  .pvs-signup-minimalist__form-group {
+    background: white;
+    border: 2px solid #e6e9f0;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  /* Add decorative corners */
+  .pvs-signup-minimalist__form-group::before,
+  .pvs-signup-minimalist__form-group::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #2196F3;
+  }
+  
+  .pvs-signup-minimalist__form-group::before {
+    top: -2px;
+    left: -2px;
+    border-right: 0;
+    border-bottom: 0;
+    border-top-left-radius: 8px;
+  }
+  
+  .pvs-signup-minimalist__form-group::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: 0;
+    border-top: 0;
+    border-bottom-right-radius: 8px;
+  }
+  
+  /* Form fields styling */
+  .pvs-form__input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .pvs-form__input:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    outline: none;
+  }
+  
+  .pvs-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #344767;
+  }
+  
+  /* Form sections spacing */
+  .pvs-form__row {
+    margin-bottom: 1.5rem;
+  }
+  
+  .pvs-form__row:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Submit button styling */
+  .pvs-button--primary {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .pvs-button--primary:hover {
+    background: linear-gradient(135deg, #1976D2, #1565C0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+  }
+  
+  /* Password input group specific styling */
+  .pvs-form__input--with-suffix {
+    position: relative;
+  }
+  
+  .pvs-form__input-suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  
+  .pvs-form__input-suffix:hover {
+    color: #2196F3;
+  }
+  
+  /* Step indicators styling update */
+  .pvs-signup-minimalist-top-block-group-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .pvs-signup-minimalist-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .badge-completed .pvs-signup-minimalist-badge {
+    background-color: #4CAF50;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+  }
+  
+  .badge-current .pvs-signup-minimalist-badge {
+    background-color: #2196F3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+  }
+  
+  
+  
+  
