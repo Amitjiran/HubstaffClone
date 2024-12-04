@@ -5,7 +5,7 @@ import DashboardGrid from './DashboardGrid';
 import './AMainDashboard.css';
 
 const AMainDashboard = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
     <div className="amain-dashboard-layout">

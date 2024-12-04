@@ -1,49 +1,268 @@
 .page-wrapper {
-    min-height: 100vh;
-    display: flex;
-    background-color: #f5f7f9;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  background: linear-gradient(
+    45deg, 
+    #67b3d3, 
+    #1ebdab, 
+    #375f71
+  );
+  animation: gradientBG 20s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.customer-retention-login {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-container {
+  flex: 1;
+  background:rgba(0, 0, 255, 0.277);
+  backdrop-filter: blur(10px);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  z-index: -1;
+}
+
+.greetings {
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.greetings h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+}
+
+.onboarding-container {
+  width: 680px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.31);
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.session-message {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.lighter {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.Persist-logo {
+  text-align: center;
+  height: 10px;
+  margin-bottom: 2.5rem;
+}
+
+.Persist-logo img {
+  transition: transform 0.3s ease;
+  height: 80px;
+}
+
+.Persist-logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Floating particles animation */
+.illustration-container::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: 50%;
+  filter: blur(5px);
+  animation: float 10s infinite;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(100px, 50px) rotate(90deg);
+  }
+  50% {
+    transform: translate(50px, 100px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50px, 50px) rotate(270deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .customer-retention-login {
-    display: flex;
-    width: 100%;
+    flex-direction: column;
   }
-  
+
   .illustration-container {
-    flex: 1;
-    background-color: #fff;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
+    padding: 2rem;
+    min-height: 300px;
   }
-  
-  .greetings h1 {
-    font-size: 32px;
-    color: #1b1f23;
-    margin-bottom: 40px;
-  }
-  
+
   .onboarding-container {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    padding: 2rem;
   }
-  
+
+  .greetings h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .onboarding-container {
+    padding: 1.5rem;
+  }
+
   .session-message {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #1b1f23;
+    padding: 1rem;
+    font-size: 0.9rem;
   }
-  
-  .lighter {
-    color: #6c7680;
+
+  .greetings h1 {
+    font-size: 1.5rem;
   }
-  
-  .Persist-logo {
-    margin-bottom: 40px;
-    text-align: center;
+
+  .Persist-logo img {
+    width: 180px;
+    height: auto;
   }
-  
+}
+
+/* Glass morphism effects */
+.onboarding-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: inherit;
+  z-index: -1;
+}
+
+/* Hover effects */
+.session-message:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+/* Loading state */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

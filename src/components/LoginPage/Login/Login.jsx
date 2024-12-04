@@ -9,7 +9,7 @@ const Login = () => {
       <div className="customer-retention customer-retention-login">
         <div className="illustration-container">
           <div className="greetings">
-            <h1>Welcome to our community</h1>
+            <h1>Welcome to our Persist Ventures community</h1>
           </div>
           <ReviewCarousel />
         </div>
@@ -29,7 +29,9 @@ const Login = () => {
                 />
               </a>
             </div>
-            <LoginForm />
+            
+            {/* <LoginForm />   */}
+            <LoginForm />  
           </div>
         </div>
       </div>

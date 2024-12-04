@@ -26,23 +26,23 @@ import Dashboard from './components/Dashboard/MainDashboard/AMainDashboard'
 import AMainLogin from './components/LoginPage/Login/AMainLogin'
 import UserRegister from './components/Register/UserRegister/UserRegister'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import FirstDashboard from './components/Dashboard/FirstDashboard/FirstDashboard'
 function App() {
   return (
-    <div>
+    <>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<AMainLogin/>}/>
         <Route path="/userregister" element={<UserRegister/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/firstdash" element={<FirstDashboard/>}/>
       </Routes>
       </BrowserRouter>
     
-   {/* <Dashboard/> */}
-    </div>
+    </>
   )
 }
-
-export default App
+export default App;
 
 
 

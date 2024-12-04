@@ -17,7 +17,7 @@ const ReviewCarousel = () => {
       <div className="line"></div>
       <div className="carousel carousel-fade" id="quote-carousel">
         <div className="carousel-inner">
-          {reviews.map((review, index) => (
+          {reviews.map((review, index) => { return(
             <div key={index} className={`item ${index === 2 ? 'active' : ''}`}>
               <div className="stars">
                 {[...Array(5)].map((_, i) => (
@@ -35,7 +35,7 @@ const ReviewCarousel = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </div>
