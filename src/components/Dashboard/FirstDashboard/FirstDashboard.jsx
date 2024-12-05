@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
 import './FirstDashboard.css';
-// Import icons from react-icons
 import { FaEllipsisV, FaPlay, FaCode, FaChrome, FaFileAlt } from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
+import Todo_dashb from './TodoDashb';
 
 const FirstDashboard = () => {
   const [currentTime, setCurrentTime] = useState('0:00:00');
   const [totalTime, setTotalTime] = useState('8:30:00');
+
+// const navigate=useNavigate();
+// const handleAddTodo=()=>{
+//   console.log("clicked");
+//   navigate('/Todo-dashb');
+// }
+
+  const todos = [
+    {
+      task: 'Finish project report',
+      dueDate: '2024-12-10',
+      priority: 'High',
+      completed: false
+    },
+    {
+      task: 'Prepare presentation',
+      dueDate: '2024-12-12',
+      priority: 'Medium',
+      completed: true
+    },
+    {
+      task: 'Email client feedback',
+      dueDate: '2024-12-15',
+      priority: 'Low',
+      completed: false
+    }
+  ];
 
   const timeEntries = [
     {
@@ -76,7 +104,7 @@ const FirstDashboard = () => {
   return (
     <div className='wrapper'>
       <div className="dashboard-container">
-        <header className="dashboard-header">
+        {/* <header className="dashboard-header">
           <div className="header-left">
             <h1>Dashboard</h1>
             <div className="date-picker">
@@ -89,7 +117,7 @@ const FirstDashboard = () => {
               <span>John Doe</span>
             </div>
           </div>
-        </header>
+        </header> */}
 
         <div className="dashboard-content">
           <div className="widgets-container">
@@ -205,6 +233,46 @@ const FirstDashboard = () => {
                 </div>
               </div>
             </div>
+
+            {/*Working Todo widget */}
+        {/* To-Do Widget */}
+<div className="widget apps-urls">
+  <div className="widget-header">
+    <h3>To-Do List</h3>
+    <div className="widget-actions">
+      <button className="add-todo-btn" ><a href="/tododash">Add todo</a></button>
+      <button className="btn-icon"><FaEllipsisV /></button>
+    </div>
+  </div>
+ 
+
+  <div className="widget-body">
+    <div className="todo-list">
+      {todos.map((todo, index) => (
+        <div key={index} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+          <div className="todo-info">
+            <span className="todo-task">{todo.task}</span>
+            <div className="todo-details">
+              <span className="todo-due">Due: {todo.dueDate}</span>
+              <span className={`todo-priority ${todo.priority.toLowerCase()}`}>{todo.priority}</span>
+            </div>
+          </div>
+          <div className="todo-status">
+            {todo.completed ? 'Completed' : 'Pending'}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</div>
+
+<div>
+</div>
+
+
+
+
           </div>
         </div>
 
@@ -215,7 +283,7 @@ const FirstDashboard = () => {
               <button className="timer-button">
                 <FaPlay />
               </button>
-              <div className="timer-display">{currentTime}</div>
+              {/* <div className="timer-display">{currentTime}</div> */}
             </div>
             <div className="timer-project">
               <select defaultValue="">
@@ -228,6 +296,7 @@ const FirstDashboard = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

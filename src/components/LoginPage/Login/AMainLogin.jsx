@@ -6,8 +6,7 @@ const AMainLogin = () => {
   return (
     <div>
         <Login/>
-      {/* <LoginForm /> */}
-      
+      {/* <LoginForm /> */} 
     </div>
   );
 };

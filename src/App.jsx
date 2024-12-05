@@ -16,8 +16,6 @@
 // export default App
 
 
-
-
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -27,6 +25,7 @@ import AMainLogin from './components/LoginPage/Login/AMainLogin'
 import UserRegister from './components/Register/UserRegister/UserRegister'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import FirstDashboard from './components/Dashboard/FirstDashboard/FirstDashboard'
+import TodoDashb from './components/Dashboard/FirstDashboard/TodoDashb'
 function App() {
   return (
     <>
@@ -36,6 +35,7 @@ function App() {
         <Route path="/userregister" element={<UserRegister/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/firstdash" element={<FirstDashboard/>}/>
+        <Route path="/tododash" element={<TodoDashb/>}/>
       </Routes>
       </BrowserRouter>
     

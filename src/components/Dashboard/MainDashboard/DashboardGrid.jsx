@@ -81,7 +81,7 @@
 import React from 'react';
 import './DashboardGrid.css';
 import ScreenShot from './Screenshot';
-
+import FirstDashboard from '../FirstDashboard/FirstDashboard';
 const DashboardGrid = () => {
   const gridItems = [
     { id: 1, title: 'Activity', value: '85%', type: 'activity' },
@@ -91,6 +91,7 @@ const DashboardGrid = () => {
   ];
 
   return (
+    <div>
     <div className="dashboard-grid">
       <div className="grid-container">
         {gridItems.map(item => (
@@ -102,7 +103,13 @@ const DashboardGrid = () => {
       </div>
       <div className="screenshots-container">
         <h2>Recent Screenshots</h2>
+        {/* here is the screenshot component */}
         <ScreenShot />
+      </div>
+    </div>
+
+    <div>
+      <FirstDashboard/>
       </div>
     </div>
   );

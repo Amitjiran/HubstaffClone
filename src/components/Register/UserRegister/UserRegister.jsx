@@ -13,11 +13,13 @@ const UserRegister = () => {
       <div className="pvs-signup-minimalist__page">
          <div className="pvs-signup-minimalist__top-bar">
           <svg className="pvs-icon pvs-signup-minimalist__logo" aria-hidden="true">
-            <use xlinkHref="/_astro/icons.svg#logo-hubstaff" />
+            <use xlinkHref="/_astro/icons.svg#logo-persist" />
           </svg>
           <div className="pvs-signup-minimalist__signin">
             <span>Have a Persist tracker account already?</span>
             <a className="pvs-button pvs-button--secondary" href="/">Sign in</a>
+            <a className="pvs-button pvs-button--secondary" href="/dashboard">Go to dashboard</a>
+
           </div>
          </div>
 
@@ -41,10 +43,10 @@ const UserRegister = () => {
             <div className="pvs-signup-minimalist__form-group">
               <div className="pvs-form__row">
                 <div className="pvs-form__input-group">
-                  <label className="pvs-form__label" htmlFor="hubstaff_email">Work email</label>
+                  <label className="pvs-form__label" htmlFor="persist_email">Work email</label>
                   <input 
                     className="pvs-form__input pvs-form__input--secondary"
-                    id="hubstaff_email"
+                    id="persist_email"
                     type="email"
                     name="user[email]"
                     placeholder="Enter your work email"
@@ -56,10 +58,10 @@ const UserRegister = () => {
               <div className="pvs-form-step-2">
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
-                    <label className="pvs-form__label" htmlFor="hubstaff_user_first_name">First name</label>
+                    <label className="pvs-form__label" htmlFor="persist_user_first_name">First name</label>
                     <input 
                       className="pvs-form__input pvs-form__input--secondary"
-                      id="hubstaff_user_first_name"
+                      id="persist_user_first_name"
                       type="text"
                       name="user[first_name]"
                       placeholder="Enter your first name"
@@ -71,10 +73,10 @@ const UserRegister = () => {
 
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
-                    <label className="pvs-form__label" htmlFor="hubstaff_user_last_name">Last name</label>
+                    <label className="pvs-form__label" htmlFor="persist_user_last_name">Last name</label>
                     <input 
                       className="pvs-form__input pvs-form__input--secondary"
-                      id="hubstaff_user_last_name"
+                      id="persist_user_last_name"
                       type="text"
                       name="user[last_name]"
                       placeholder="Enter your last name"
@@ -86,11 +88,11 @@ const UserRegister = () => {
 
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
-                    <label className="pvs-form__label" htmlFor="hubstaff_password">Password</label>
+                    <label className="pvs-form__label" htmlFor="persist_password">Password</label>
                     <div className="pvs-form__input--with-suffix">
                       <input 
                         className="pvs-form__input pvs-form__input--secondary"
-                        id="hubstaff_password"
+                        id="persist_password"
                         type={showPassword ? "text" : "password"}
                         name="user[password]"
                         placeholder="Enter 6 or more characters"
