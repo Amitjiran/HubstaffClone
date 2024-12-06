@@ -1,86 +1,107 @@
 // src/components/Dashboard/Sidebar.jsx
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  FaHome, 
+  FaTasks, 
+  FaCalendarAlt, 
+  FaChartLine, 
+  FaCog, 
+  FaUser, 
+  FaBars, 
+  FaSignOutAlt,
+  FaBell,
+  FaSearch
+} from 'react-icons/fa';
 import './Sidebar.css';
 
 const Sidebar = ({ isCollapsed, onToggle }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const location = useLocation();
+
+  const menuItems = [
+    { path: '/', name: 'Dashboard', icon: <FaHome /> },
+    { path: '/tasks', name: 'Tasks', icon: <FaTasks /> },
+    { path: '/calendar', name: 'Calendar', icon: <FaCalendarAlt /> },
+    { path: '/analytics', name: 'Analytics', icon: <FaChartLine /> },
+  ];
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
-    <>
-      <button 
-        className="hamburger-button"
-        onClick={onToggle}
-      >
-        <div className={`hamburger-icon ${isCollapsed ? 'collapsed' : ''}`}>
-          <span></span>
-          <span></span>
-          <span></span>
+    <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+      <div className="sidebar-header">
+        <div className="logo-container">
+          {!isCollapsed && <h2>TimeTracker</h2>}
+          <button 
+            className="collapse-btn"
+            onClick={onToggle}
+          >
+            <FaBars />
+          </button>
         </div>
-      </button>
-
-      <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
-        <div className="org-panel">
-          <div className="org-selector">
-            <div className="org-name">
-              <span className="org-icon">O</span>
-              <span className="org-text">Organization name</span>
-            </div>
-            <span className="dropdown-arrow">▼</span>
-          </div>
-        </div>
-        
-        <nav className="sidebar-nav">
-          <div className="nav-section">
-            <a href="#" className="nav-item active">
-              <span className="nav-icon">📊</span>
-              <span className="nav-text">Dashboard</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">📈</span>
-              <span className="nav-text">Activity</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">🖼️</span>
-              <span className="nav-text">Screenshots</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">🔗</span>
-              <span className="nav-text">Apps & URLs</span>
-            </a>
-          </div>
-
-          <div className="nav-section">
-            <div className="section-title">ANALYZE</div>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">📊</span>
-              <span className="nav-text">Reports</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">💰</span>
-              <span className="nav-text">Budgets</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">⏰</span>
-              <span className="nav-text">Time & activities</span>
-            </a>
-          </div>
-
-          <div className="nav-section">
-            <div className="section-title">MANAGE</div>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">👥</span>
-              <span className="nav-text">Members</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">📂</span>
-              <span className="nav-text">Projects</span>
-            </a>
-            <a href="#" className="nav-item">
-              <span className="nav-icon">⚙️</span>
-              <span className="nav-text">Settings</span>
-            </a>
-          </div>
-        </nav>
       </div>
-    </>
+
+      {!isCollapsed && (
+        <div className="search-container">
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      )}
+
+      <div className="sidebar-menu">
+        {menuItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`menu-item ${isActive(item.path) ? 'active' : ''}`}
+          >
+            <span className="icon">{item.icon}</span>
+            {!isCollapsed && <span className="label">{item.name}</span>}
+            {!isCollapsed && isActive(item.path) && <div className="active-indicator" />}
+          </Link>
+        ))}
+      </div>
+
+      <div className="sidebar-footer">
+        <div className="notifications">
+          <FaBell className="icon" />
+          {!isCollapsed && <span className="notification-badge">3</span>}
+        </div>
+
+        <div className="user-profile">
+          <img 
+            src="https://via.placeholder.com/40" 
+            alt="User Avatar"
+            className="avatar"
+          />
+          {!isCollapsed && (
+            <div className="user-info">
+              <span className="user-name">John Doe</span>
+              <span className="user-role">Admin</span>
+            </div>
+          )}
+        </div>
+
+        <div className="footer-actions">
+          <Link to="/settings" className="menu-item">
+            <FaCog className="icon" />
+            {!isCollapsed && <span className="label">Settings</span>}
+          </Link>
+          <button className="menu-item logout-btn">
+            <FaSignOutAlt className="icon" />
+            {!isCollapsed && <span className="label">Logout</span>}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

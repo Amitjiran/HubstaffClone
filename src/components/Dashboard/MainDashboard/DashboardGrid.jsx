@@ -82,34 +82,104 @@ import React from 'react';
 import './DashboardGrid.css';
 import ScreenShot from './Screenshot';
 import FirstDashboard from '../FirstDashboard/FirstDashboard';
+import { 
+  FaClock, 
+  FaChartLine, 
+  FaProjectDiagram, 
+  FaTasks,
+  FaArrowUp,
+  FaArrowDown
+} from 'react-icons/fa';
+
 const DashboardGrid = () => {
   const gridItems = [
-    { id: 1, title: 'Activity', value: '85%', type: 'activity' },
-    { id: 2, title: 'Time Tracked', value: '6h 30m', type: 'time' },
-    { id: 3, title: 'Projects', value: '12', type: 'projects' },
-    { id: 4, title: 'Tasks', value: '45', type: 'tasks' }
+    { 
+      id: 1, 
+      title: 'Activity', 
+      value: '85%', 
+      type: 'activity',
+      icon: <FaChartLine />,
+      trend: '+12%',
+      trendUp: true,
+      color: '#10B981'
+    },
+    { 
+      id: 2, 
+      title: 'Time Tracked', 
+      value: '6h 30m', 
+      type: 'time',
+      icon: <FaClock />,
+      trend: '+2.5h',
+      trendUp: true,
+      color: '#3B82F6'
+    },
+    { 
+      id: 3, 
+      title: 'Projects', 
+      value: '12', 
+      type: 'projects',
+      icon: <FaProjectDiagram />,
+      trend: '-1',
+      trendUp: false,
+      color: '#8B5CF6'
+    },
+    { 
+      id: 4, 
+      title: 'Tasks', 
+      value: '45', 
+      type: 'tasks',
+      icon: <FaTasks />,
+      trend: '+8',
+      trendUp: true,
+      color: '#F59E0B'
+    }
   ];
 
   return (
-    <div>
-    <div className="dashboard-grid">
-      <div className="grid-container">
-        {gridItems.map(item => (
-          <div key={item.id} className="grid-item">
-            <h3>{item.title}</h3>
-            <div className="value">{item.value}</div>
-          </div>
-        ))}
+    <div className="dashboard-container">
+      {/* Stats Grid */}
+      <div className="stats-overview">
+        <h2 className="section-title">Overview</h2>
+        <div className="stats-grid">
+          {gridItems.map(item => (
+            <div key={item.id} className="stat-card">
+              <div className="stat-icon" style={{ backgroundColor: `${item.color}15` }}>
+                <span style={{ color: item.color }}>{item.icon}</span>
+              </div>
+              
+              <div className="stat-details">
+                <span className="stat-title">{item.title}</span>
+                <div className="stat-value-container">
+                  <span className="stat-value">{item.value}</span>
+                  <span className={`stat-trend ${item.trendUp ? 'positive' : 'negative'}`}>
+                    {item.trendUp ? <FaArrowUp /> : <FaArrowDown />}
+                    {item.trend}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="screenshots-container">
-        <h2>Recent Screenshots</h2>
-        {/* here is the screenshot component */}
+
+      {/* Screenshots Section */}
+      <div className="screenshots-section">
+        <div className="section-header">
+          <h2 className="section-title">Recent Screenshots</h2>
+          <div className="section-actions">
+            <select className="time-filter">
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </div>
+        </div>
         <ScreenShot />
       </div>
-    </div>
 
-    <div>
-      <FirstDashboard/>
+      {/* Dashboard Content */}
+      <div className="dashboard-content">
+        <FirstDashboard />
       </div>
     </div>
   );

@@ -1,0 +1,28 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 280px; /* Same as sidebar width */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.main-content.content-expanded {
+  margin-left: 80px; /* Same as collapsed sidebar width */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+  
+  .main-content.content-expanded {
+    margin-left: 0;
+  }
+}
