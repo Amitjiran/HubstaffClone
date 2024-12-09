@@ -1,0 +1,346 @@
+/* Main Calendar Container */
+.calendar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Calendar Header */
+  .calendar-header {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+  }
+  
+  .calendar-navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .calendar-navigation button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .calendar-navigation button:hover {
+    background-color: #e9ecef;
+  }
+  
+  .calendar-navigation h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .view-controls {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .view-controls button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .view-controls button.active {
+    background: #007bff;
+    color: white;
+    border-color: #0056b3;
+  }
+  
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* Month View */
+  .month-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .weekday-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .weekday {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+  }
+  
+  .month-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    border-left: 1px solid #eaeaea;
+  }
+  
+  .day-cell {
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    padding: 8px;
+    min-height: 100px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .day-cell:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .day-cell.other-month {
+    background-color: #f8f9fa;
+    color: #aaa;
+  }
+  
+  .day-cell.today {
+    background-color: #e8f4ff;
+  }
+  
+  .day-cell.selected {
+    background-color: #e3f2fd;
+  }
+  
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .day-number {
+    font-weight: 500;
+  }
+  
+  .today-marker {
+    font-size: 0.75rem;
+    color: #007bff;
+  }
+  
+  .day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  /* Week View */
+  .week-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .week-header {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    background: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .week-body {
+    flex: 1;
+    display: flex;
+  }
+  
+  .time-column {
+    width: 60px;
+    border-right: 1px solid #eaeaea;
+  }
+  
+  .time-slot {
+    height: 40px;
+    padding: 4px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+  }
+  
+  .week-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .week-time-slot {
+    height: 40px;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+  }
+  
+  /* Day View */
+  .day-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .day-header {
+    padding: 16px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .day-body {
+    flex: 1;
+    display: flex;
+  }
+  
+  /* Event Styles */
+  .event-pill {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .week-event, .day-event {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 1px;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .event-modal {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="date"],
+  .form-group input[type="time"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .modal-footer button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .delete-button {
+    background: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .calendar-header {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  
+    .week-view, .day-view {
+      overflow-x: auto;
+    }
+  }
