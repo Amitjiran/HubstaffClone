@@ -11,10 +11,10 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import FirstDashboard from './components/Dashboard/FirstDashboard/FirstDashboard'
 import TodoDashb from './components/Dashboard/FirstDashboard/TodoDashb'
 import Calendar from './components/Dashboard/Calendar/Calendar'
+import Aactivity from './components/Dashboard/Aactivity/Aactivity'
 function App() {
   return (
     <>
-    {/* <Calendar/> */}
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<AMainLogin/>}/>
@@ -23,6 +23,7 @@ function App() {
         <Route path="/firstdash" element={<FirstDashboard/>}/>
         <Route path="/tododash" element={<TodoDashb/>}/>
         <Route path="/calendar" element={<Calendar/>}/>
+        <Route path="/aactivity" element={<Aactivity/>}/>
       </Routes>
       </BrowserRouter>
     </>

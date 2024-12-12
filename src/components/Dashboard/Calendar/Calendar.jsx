@@ -17,7 +17,6 @@ import {
 } from 'date-fns';
 import './Calendar.css';
 
-
 // CalendarHeader Component
 const CalendarHeader = ({ 
   currentDate, 
@@ -616,51 +615,53 @@ const Calendar = () => {
 
   // Fetch initial events
 
-  // useEffect(() => {
-
-  //   const fetchEvents = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       // Simulate API delay
-  //       await new Promise(resolve => setTimeout(resolve, 1000));
+  useEffect(() => {
+    const fetchEvents = async () => {
+      // setIsLoading(true);
+      try {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
         
-  //       const mockEvents = [
-  //         {
-  //           id: 1,
-  //           title: 'Team Meeting',
-  //           description: 'Weekly team sync',
-  //           date: new Date(),
-  //           startTime: '10:00',
-  //           endTime: '11:00',
-  //           category: 1,
-  //           location: 'Conference Room A',
-  //           isCompleted: false
-  //         },
-  //         {
-  //           id: 2,
-  //           title: 'Project Deadline',
-  //           description: 'Submit final deliverables',
-  //           date: addDays(new Date(), 3),
-  //           startTime: '15:00',
-  //           endTime: '16:00',
-  //           category: 2,
-  //           location: 'Online',
-  //           isCompleted: false
-  //         }
-  //       ];
+        const mockEvents = [
+          {
+            id: 1,
+            title: 'Team Meeting',
+            description: 'Weekly team sync',
+            date: new Date(),
+            startTime: '10:00',
+            endTime: '11:00',
+            category: 1,
+            location: 'Conference Room A',
+            isCompleted: false
+          },
+          {
+            id: 2,
+            title: 'Project Deadline',
+            description: 'Submit final deliverables',
+            date: addDays(new Date(), 3),
+            startTime: '15:00',
+            endTime: '16:00',
+            category: 2,
+            location: 'Online',
+            isCompleted: false
+          }
+        ];
         
-  //       console.log('Mock events fetched:', mockEvents); // Log the mock data
-  //       setEvents(mockEvents); // Set the events state
-  //     } catch (err) {
-  //       setError('Failed to fetch events');
-  //       console.error('Error fetching events:', err);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+        console.log('Mock events fetched:', mockEvents); // Log the mock data
+      
+        // setEvents(mockEvents); // Set the events state
+      } 
+      catch (err) {
+        setError('Failed to fetch events');
+        console.error('Error fetching events:', err);
+      } 
+      finally {
+        setIsLoading();
+      }
+    };
 
-  //   fetchEvents();
-  // }, []);
+    fetchEvents();
+  }, []);
 
 
 

@@ -24,6 +24,8 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
     { path: '/tasks', name: 'Tasks', icon: <FaTasks /> },
     { path: '/calendar', name: 'Calendar', icon: <FaCalendarAlt /> },
     { path: '/analytics', name: 'Analytics', icon: <FaChartLine /> },
+    { path: '/activity', name: 'Activity', icon: <FaChartLine /> },
+
   ];
 
   const isActive = (path) => {

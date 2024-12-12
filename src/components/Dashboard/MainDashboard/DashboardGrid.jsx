@@ -1,87 +1,8 @@
-// // src/components/Dashboard/DashboardGrid.jsx
-// import React from 'react';
-// import './DashboardGrid.css';
-
-// const DashboardGrid = () => {
-//   return (
-//     <div className="stats-grid">
-//       <div className="stat-card">
-//         <div className="stat-header">
-//           <div className="stat-info">
-//             <span className="stat-title">Hours tracked</span>
-//             <div className="stat-value">00:00</div>
-//           </div>
-//           <div className="stat-trend">
-//             <span className="trend-value">0%</span>
-//           </div>
-//         </div>
-//         <div className="stat-chart">
-//           <div className="empty-state">
-//             <span>No data available</span>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="stat-card">
-//         <div className="stat-header">
-//           <div className="stat-info">
-//             <span className="stat-title">Activity</span>
-//             <div className="stat-value">0%</div>
-//           </div>
-//           <div className="stat-trend">
-//             <span className="trend-value">0%</span>
-//           </div>
-//         </div>
-//         <div className="stat-chart">
-//           <div className="empty-state">
-//             <span>No data available</span>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="stat-card">
-//         <div className="stat-header">
-//           <div className="stat-info">
-//             <span className="stat-title">Amount spent</span>
-//             <div className="stat-value">$0.00</div>
-//           </div>
-//           <div className="stat-trend">
-//             <span className="trend-value">0%</span>
-//           </div>
-//         </div>
-//         <div className="stat-chart">
-//           <div className="empty-state">
-//             <span>No data available</span>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="stat-card">
-//         <div className="stat-header">
-//           <div className="stat-info">
-//             <span className="stat-title">Projects tracked</span>
-//             <div className="stat-value">0</div>
-//           </div>
-//         </div>
-//         <div className="stat-chart">
-//           <div className="empty-state">
-//             <span>No data available</span>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DashboardGrid;
-
-
-
-
 import React from 'react';
 import './DashboardGrid.css';
 import ScreenShot from './Screenshot';
 import FirstDashboard from '../FirstDashboard/FirstDashboard';
+
 import { 
   FaClock, 
   FaChartLine, 
@@ -135,18 +56,18 @@ const DashboardGrid = () => {
     }
   ];
 
+
   return (
     <div className="dashboard-container">
       {/* Stats Grid */}
       <div className="stats-overview">
         <h2 className="section-title">Overview</h2>
         <div className="stats-grid">
-          {gridItems.map(item => (
+          {gridItems.map(item =>(
             <div key={item.id} className="stat-card">
               <div className="stat-icon" style={{ backgroundColor: `${item.color}15` }}>
                 <span style={{ color: item.color }}>{item.icon}</span>
-              </div>
-              
+              </div> 
               <div className="stat-details">
                 <span className="stat-title">{item.title}</span>
                 <div className="stat-value-container">
