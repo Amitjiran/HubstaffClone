@@ -2,11 +2,33 @@ import { useState } from 'react';
 import './UserRegister.css';
 
 const UserRegister = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const [showPassword, setShowPassword] = useState(false);
+const [activeStep, setActiveStep] = useState(1); // Track the active step
 
-  const togglePassword = () => {
+const togglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted");
+  };
+
+  const goToNextStep = () => {
+    if (activeStep < 2) {
+      setActiveStep(activeStep + 1);
+    }
+  };
+
+  const goToPreviousStep = () => {
+    if (activeStep > 1) {
+      setActiveStep(activeStep - 1);
+    }
+  };
+
+
 
   return (
     <main className="pvs-layout__main">
@@ -19,43 +41,45 @@ const UserRegister = () => {
             <span>Have a Persist tracker account already?</span>
             <a className="pvs-button pvs-button--secondary" href="/">Sign in</a>
             <a className="pvs-button pvs-button--secondary" href="/dashboard">Go to dashboard</a>
-
           </div>
          </div>
 
-          <div className="pvs-signup-minimalist__container">
+
+         <main className="pvs-layout__main">
+      <div className="pvs-signup-minimalist__page">
+        <div className="pvs-signup-minimalist__top-bar">
+          {/* ... existing code ... */}
+        </div>
+
+        <div className="pvs-signup-minimalist__container">
           <div className="pvs-signup-minimalist-top-block-group-2">
-            <div className="pvs-signup-minimalist-top-block-step badge-completed">
+            <div className={`pvs-signup-minimalist-top-block-step ${activeStep === 1 ? 'badge-current' : 'badge-inactive'}`}>
               <span className="pvs-signup-minimalist-badge">1</span>
-              <span className="pvs-signup-minimalist-badge-text">Confirm email</span>
-            </div>
-            <div className="pvs-signup-minimalist-top-block-step badge-current">
-              <span className="pvs-signup-minimalist-badge">2</span>
               <span className="pvs-signup-minimalist-badge-text">Complete information</span>
             </div>
-            <div className="pvs-signup-minimalist-top-block-step badge-inactive">
-              <span className="pvs-signup-minimalist-badge">3</span>
+            <div className={`pvs-signup-minimalist-top-block-step ${activeStep === 2 ? 'badge-current' : 'badge-inactive'}`}>
+              <span className="pvs-signup-minimalist-badge">2</span>
               <span className="pvs-signup-minimalist-badge-text">Verify your email</span>
             </div>
           </div>
-      
-        <form className="pvs-form auth_form">
-            <div className="pvs-signup-minimalist__form-group">
-              <div className="pvs-form__row">
-                <div className="pvs-form__input-group">
-                  <label className="pvs-form__label" htmlFor="persist_email">Work email</label>
-                  <input 
-                    className="pvs-form__input pvs-form__input--secondary"
-                    id="persist_email"
-                    type="email"
-                    name="user[email]"
-                    placeholder="Enter your work email"
-                    required
-                  />
-                </div>
-              </div>
 
-              <div className="pvs-form-step-2">
+          <form className="pvs-form auth_form" onSubmit={handleSubmit}>
+            {activeStep === 1 && (
+              <div className="pvs-signup-minimalist__form-group">
+                {/* Complete Information Fields */}
+                <div className="pvs-form__row">
+                  <div className="pvs-form__input-group">
+                    <label className="pvs-form__label" htmlFor="persist_email">Work email</label>
+                    <input 
+                      className="pvs-form__input pvs-form__input--secondary"
+                      id="persist_email"
+                      type="email"
+                      name="user[email]"
+                      placeholder="Enter your work email"
+                      required
+                    />
+                  </div>
+                </div>
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
                     <label className="pvs-form__label" htmlFor="persist_user_first_name">First name</label>
@@ -70,7 +94,6 @@ const UserRegister = () => {
                     />
                   </div>
                 </div>
-
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
                     <label className="pvs-form__label" htmlFor="persist_user_last_name">Last name</label>
@@ -83,9 +106,8 @@ const UserRegister = () => {
                       required
                       minLength="2"
                     />
-                  </div>
+          </div>
                 </div>
-
                 <div className="pvs-form__row">
                   <div className="pvs-form__input-group">
                     <label className="pvs-form__label" htmlFor="persist_password">Password</label>
@@ -99,20 +121,40 @@ const UserRegister = () => {
                         required
                         minLength="6"
                       />
-                     
+                      <button type="button" onClick={togglePassword}>
+                        {showPassword ? "Hide" : "Show"}
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
+ {activeStep === 2 && (
+              <div className="pvs-signup-minimalist__form-group">
+                {/* Verify Email Fields */}
+                <p>Please check your email to verify your account.</p>
+                <button type="button" onClick={goToPreviousStep}>
+                  Back to Complete Information
+                </button>
+              </div>
+            )}
 
             <div className="pvs-form__input-group">
-              <button className="pvs-button pvs-button--primary pvs-button--medium pvs-button--block-level">
-                Create my account 
-              </button>
+              {activeStep === 1 && (
+                <button type="button" onClick={goToNextStep} className="pvs-button pvs-button--primary pvs-button--medium pvs-button--block-level">
+                  Next
+                </button>
+              )}
+              {activeStep === 2 && (
+                <button type="submit" className="pvs-button pvs-button--primary pvs-button--medium pvs-button--block-level">
+                  Verify Email
+                </button>
+              )}
             </div>
-        </form>
+          </form>
         </div>
+      </div>
+    </main>
       </div>
     </main>
   );
