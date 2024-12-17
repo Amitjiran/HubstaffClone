@@ -1,0 +1,92 @@
+.profile-view-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+}
+
+.profile-pic-container {
+    position: relative; /* Position relative for the upload button */
+}
+
+.profile-pic {
+    width: 150px; /* Set width for profile picture */
+    height: 150px; /* Set height for profile picture */
+    border-radius: 50%; /* Circular profile picture */
+    object-fit: cover; /* Cover the area */
+    margin-bottom: 15px; /* Space below the picture */
+}
+
+.upload-button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex; /* Flex display for icon and text */
+    align-items: center; /* Center align items */
+}
+
+.file-input {
+    display: none; /* Hide the file input */
+}
+
+.profile-field {
+    margin-bottom: 15px;
+    text-align: center; /* Center align text */
+}
+
+.profile-field label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.profile-field input {
+    padding: 8px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.save-button, .edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover, .edit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

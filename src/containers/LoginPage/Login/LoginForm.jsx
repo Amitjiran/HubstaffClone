@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
-
+import { useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate=useNavigate();
+const handlerClick=()=>{
+  navigate('./selectrole')
+}
   return (
     <div className="form-wrapper">
       <div className="form">
@@ -50,8 +53,8 @@ const LoginForm = () => {
                 </div>
               </div>
               <div className="sign-in">
-                <button type="submit" className="btn btn-info btn-lg btn-block hs-button">
-                  Sign in
+                <button type="submit" onClick={handlerClick} className="btn btn-info btn-lg btn-block hs-button" >
+                  Log in
                 </button>
               </div>
               <div className="sso">

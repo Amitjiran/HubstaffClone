@@ -43,7 +43,7 @@ const togglePassword = () => {
             <a className="pvs-button pvs-button--secondary" href="/dashboard">Go to dashboard</a>
           </div>
          </div>
-
+          
 
          <main className="pvs-layout__main">
       <div className="pvs-signup-minimalist__page">
@@ -112,6 +112,7 @@ const togglePassword = () => {
                   <div className="pvs-form__input-group">
                     <label className="pvs-form__label" htmlFor="persist_password">Password</label>
                     <div className="pvs-form__input--with-suffix">
+
                       <input 
                         className="pvs-form__input pvs-form__input--secondary"
                         id="persist_password"

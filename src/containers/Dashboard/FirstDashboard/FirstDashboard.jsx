@@ -114,7 +114,7 @@ const FirstDashboard = () => {
           <div className="header-right">
             <div className="user-profile">
               <img src="/default-avatar.png" alt="User" />
-              <span>John Doe</span>
+              <span> Doe</span>
             </div>
           </div>
         </header> */}
