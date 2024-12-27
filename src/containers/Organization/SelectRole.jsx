@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './SelectRole.css'; // Ensure to import the CSS for styling
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import CreateOrganization from '../OrgRole/OrgManager/CreateOrganization';
 
 const SelectRole = () => {
     const [selectedRole, setSelectedRole] = useState('');
     const [organizationName, setOrganizationName] = useState('');
     const navigate = useNavigate(); // Initialize useNavigate
+
+    const handleNameChange = (event) => {
+        setOrganizationName(event.target.value); // Update the organization name
+    };
 
     const handleRoleSelect = (role) => {
         setSelectedRole(role);
@@ -19,9 +24,12 @@ const SelectRole = () => {
         // Logic to create the organization can be added here
         console.log(`Organization "${organizationName}" created!`);
         // Reset the organization name after creation
-        setOrganizationName('');
         // Navigate to the dashboard
-        navigate("/dashboard");
+        if (organizationName) {
+            navigate('/createorganization', { state: { organizationName } }); // Navigate to CreateOrganization with state
+        }
+        // setOrganizationName('');
+
     };
 
     const roles = ['Organization Manager', 'Product Manager', 'Team Leader', 'Employee'];

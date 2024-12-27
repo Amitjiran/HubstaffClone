@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
+import './CreateOrganization.css';
+import { useLocation,useNavigate } from 'react-router-dom'; // Import useLocation
 
-const CreateOrganization = ({ onCreate }) => {
-    const [organizationName, setOrganizationName] = useState('');
-    const [users, setUsers] = useState([]); // List of users to assign roles
+    const CreateOrganization = ({ onCreate }) => {
+    // const [organizationName, setOrganizationName] = useState('');
+    const location = useLocation(); // Use useLocation to access location
+    const navigate = useNavigate(); // Initialize useNavigate
+    const { organizationName,selectedRole } = location.state || {}; // Retrieve organization name from state
+
+    const [users, setUsers] = useState([]);
     const [userId, setUserId] = useState('');
     const [role, setRole] = useState('');
 
     const handleCreateOrganization = () => {
-        // Logic to create a new organization
         const newOrganization = {
             name: organizationName,
+            role: selectedRole,
             users: users,
         };
-        onCreate(newOrganization);
-        setOrganizationName('');
-        setUsers([]);
+        // onCreate(newOrganization);
+        // setOrganizationName('');
+        // setUsers([]);
+navigate('/theorganization', { state: { name: organizationName, users: users,role: selectedRole } });
     };
 
     const handleUserRoleChange = () => {
@@ -26,13 +33,13 @@ const CreateOrganization = ({ onCreate }) => {
     };
 
     return (
-        <div>
+        <div className="create-organization-container">
             <h2>Create New Organization</h2>
             <input
                 type="text"
                 placeholder="Organization Name"
                 value={organizationName}
-                onChange={(e) => setOrganizationName(e.target.value)}
+                // onChange={(e) => setOrganizationName(e.target.value)}
             />
             <div>
                 <input
@@ -54,7 +61,9 @@ const CreateOrganization = ({ onCreate }) => {
                 <h3>Assigned Users:</h3>
                 <ul>
                     {users.map((user, index) => (
-                        <li key={index}>{user.userId} - {user.role}</li>
+                        <li key={index}>
+                            <span>{user.userId}</span> - <span>{user.role}</span>
+                        </li>
                     ))}
                 </ul>
             </div>

@@ -25,6 +25,8 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
     { path: '/calendar', name: 'Calendar', icon: <FaCalendarAlt /> },
     { path: '/analytics', name: 'Analytics', icon: <FaChartLine /> },
     { path: '/activity', name: 'Activity', icon: <FaChartLine /> },
+    { path: '/createorganization', name: 'Organization', icon: <FaChartLine /> },
+
 
   ];
 
@@ -108,13 +110,3 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
 };
 
 export default Sidebar;
-
-
-
-
-
-
-
-
-
-

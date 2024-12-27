@@ -1,0 +1,87 @@
+.create-organization-container {
+    padding: 30px;
+    background-color: #ffffff; /* White background for a clean look */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+    max-width: 600px; /* Maximum width for the container */
+    margin: 40px auto; /* Center the container with margin */
+    transition: transform 0.3s; /* Smooth scaling effect */
+}
+
+.create-organization-container:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.create-organization-container h2 {
+    font-size: 32px; /* Larger font size for the title */
+    color: #333; /* Darker text color */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center align the title */
+    font-family: 'Arial', sans-serif; /* Modern font */
+}
+
+.create-organization-container input[type="text"],
+.create-organization-container select {
+    width: 100%; /* Full width input */
+    padding: 14px; /* Padding for input */
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size for input */
+    margin-bottom: 15px; /* Space below the input */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for border color and shadow */
+}
+
+.create-organization-container input[type="text"]:focus,
+.create-organization-container select:focus {
+    border-color: #0056b3; /* Darker blue on focus */
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5); /* Light blue shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+.create-organization-container button {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 14px 24px; /* Padding for button */
+    font-size: 16px; /* Font size for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    margin-top: 10px; /* Space above the button */
+    width: 100%; /* Full width button */
+}
+
+.create-organization-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.create-organization-container h3 {
+    font-size: 24px; /* Font size for assigned users title */
+    color: #333; /* Darker text color */
+    margin-top: 20px; /* Space above the title */
+}
+
+.create-organization-container ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.create-organization-container li {
+    background-color: #e9ecef; /* Light gray background for list items */
+    padding: 12px; /* Padding for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    margin-bottom: 10px; /* Space between list items */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between user ID and role */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.create-organization-container li:hover {
+    background-color: #d1d1d1; /* Darker gray on hover */
+}
+
+.create-organization-container li span {
+    font-weight: bold; /* Bold text for user ID */
+    color: #333; /* Darker text color */
+}

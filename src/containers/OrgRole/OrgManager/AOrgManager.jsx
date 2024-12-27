@@ -6,6 +6,8 @@ import ProjectFinancials from './ProjectFinancials';
 import CreateOrganization from './CreateOrganization';
 import OrganizationManager from './OrganizationManager';
 
+//no use of this file
+
 const AOrgManager=()=>(
 <>
 <BrowserRouter>
