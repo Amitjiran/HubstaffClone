@@ -1,9 +1,9 @@
 .sidebar {
-  width: 280px;
-  height: 100vh;
+  width: 240px;
+  height: 97.5vh;
   background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
   color: #ecf0f1;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
@@ -14,7 +14,7 @@
 }
 
 .sidebar.collapsed {
-  width: 80px;
+  width: 60px;
 }
 
 /* Header Styles */

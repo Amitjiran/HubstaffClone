@@ -1,0 +1,204 @@
+/* Tasks.css */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Use a clean, sans-serif font */
+    margin-left: 35px;
+    padding: 0;
+    background-color: #ecf0f1; /* Light background for the entire application */
+}
+
+/* Kanban Board Container */
+.kanban-board {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Padding around the board */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Header Styles */
+.board-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and controls */
+    align-items: center; /* Center items vertically */
+    padding: 15px 20px; /* Padding for header */
+    background: #366863; /* Dark background for header */
+    color: #ecf0f1; /* Light text color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below header */
+}
+
+/* Title Styles */
+.board-title {
+    font-size: 2rem; /* Larger font size for title */
+    font-weight: 700; /* Bold font weight */
+}
+
+/* Hubstaff Badge Styles */
+.hubstaff-badge {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 5px 10px; /* Padding for badge */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Controls Container */
+.controls-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+/* Project Selector Button */
+.project-button {
+    background: #3498db; /* Primary button color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+/* Project Button Hover Effect */
+.project-button:hover {
+    background: #2980b9; /* Darker shade on hover */
+}
+
+/* View Selector Styles */
+.view-selector {
+    display: flex; /* Flexbox for view buttons */
+    gap: 10px; /* Space between buttons */
+}
+
+/* View Button Styles */
+.view-button {
+    background: transparent; /* Transparent background */
+    color: #ecf0f1; /* Light text color */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+/* Active View Button Styles */
+.view-button.active {
+    background: #3498db; /* Active button color */
+    color: #fff; /* White text color */
+}
+
+/* View Button Hover Effect */
+.view-button:hover {
+    background: rgba(255, 255, 255, 0.1); /* Light background on hover */
+}
+
+/* Board Columns Container */
+.board-columns {
+    display: flex; /* Flexbox for columns */
+    flex: 1; /* Take remaining space */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    gap: 20px; /* Space between columns */
+}
+
+/* Individual Board Column Styles */
+.board-column {
+    background: #fff; /* White background for columns */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding for column */
+    width: 250px; /* Fixed width for columns */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: flex; /* Flexbox for column content */
+    flex-direction: column; /* Stack items vertically */
+}
+
+/* Column Header Styles */
+.column-header {
+    display: flex; /* Flexbox for header */
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 15px; /* Space below header */
+}
+
+/* Column Title Styles */
+.column-header h2 {
+    font-size: 1.5rem; /* Font size for column title */
+    font-weight: 600; /* Semi-bold font weight */
+    color: #34495e; /* Darker color for titles */
+}
+
+/* Add Task Button Styles */
+.add-task-button {
+    background: #3498db; /* Button color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+/* Add Task Button Hover Effect */
+.add-task-button:hover {
+    background: #2980b9; /* Darker shade on hover */
+}
+
+/* Task List Container */
+.task-list {
+    flex: 1; /* Take remaining space */
+    overflow-y: auto; /* Allow vertical scrolling */
+    padding: 10px 0; /* Padding for task list */
+}
+
+/* Individual Task Card Styles */
+.task-card {
+    background: rgba(52, 152, 219, 0.1); /* Light blue background for tasks */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px; /* Padding for task card */
+    margin-bottom: 15px; /* Space below task card */
+    display: flex; /* Flexbox for task content */
+    align-items: center; /* Center items vertically */
+    transition: background 0.3s ease; /* Smooth background transition */
+    cursor: grab; /* Indicate draggable */
+}
+
+/* Task Card Hover Effect */
+.task-card:hover {
+    background: rgba(52, 152, 219, 0.2); /* Darker on hover */
+}
+
+/* Task Assignee Styles */
+.task-assignee {
+    font-weight: bold; /* Bold font for assignee */
+    margin-right: 10px; /* Space to the right */
+}
+
+/* Add Task Text Button Styles */
+.add-task-text-button {
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
+    color: #3498db; /* Button color */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: left; /* Align text to the left */
+    font-size: 0.9rem; /* Font size */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Add Task Text Button Hover Effect */
+.add-task-text-button:hover {
+    color: #2980b9; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .board-columns {
+        flex-direction: column; /* Stack columns on smaller screens */
+        overflow-y: auto; /* Allow vertical scrolling */
+    }
+
+    .board-column {
+        width: 100%; /* Full width for columns */
+    }
+}

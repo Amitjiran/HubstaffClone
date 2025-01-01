@@ -15,9 +15,12 @@ import {
   getHours,
   getMinutes 
 } from 'date-fns';
-import './Calendar.css';
 
+import './Calendar.css';
 // CalendarHeader Component
+
+
+
 const CalendarHeader = ({ 
   currentDate, 
   view, 
@@ -31,7 +34,7 @@ const CalendarHeader = ({
     <div className="calendar-header">
       <div className="calendar-navigation">
         <button onClick={() => onDateChange('prev')}>&lt;</button>
-        <h2>{format(currentDate, 'MMMM yyyy')}</h2>
+        <h2>{format(currentDate, 'dd MMMM yyyy')}</h2>
         <button onClick={() => onDateChange('next')}>&gt;</button>
       </div>
       
@@ -82,6 +85,286 @@ const CalendarHeader = ({
     </div>
   );
 };
+
+
+// Main Calendar Component parent
+const Calendar = () => {
+  // State Management
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [view, setView] = useState('month');
+  const [showEventModal, setShowEventModal] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+  const [filters, setFilters] = useState({
+    categories: [],
+    showCompleted: true
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Constants
+  const CATEGORIES = [
+    { id: 1, name: 'Meeting', color: '#4CAF50' },
+    { id: 2, name: 'Deadline', color: '#f44336' },
+    { id: 3, name: 'Personal', color: '#2196F3' },
+    { id: 4, name: 'Other', color: '#9E9E9E' }
+  ];
+
+  const TIME_SLOTS = Array.from({ length: 24 }, (_, hour) => ({
+    hour,
+    time: format(addHours(startOfMonth(new Date()), hour), 'h:mm a')
+  }));
+
+  // Event Handlers
+  const handleDateChange = (direction) => {
+    if (view === 'month') {
+      setCurrentDate(prev => 
+        direction === 'next' ? addMonths(prev, 1) : subMonths(prev, 1)
+      );
+    } else if (view === 'week') {
+      setCurrentDate(prev => 
+        direction === 'next' ? addDays(prev, 7) : addDays(prev, -7)
+      );
+    } else {
+      setCurrentDate(prev => 
+        direction === 'next' ? addDays(prev, 1) : addDays(prev, -1)
+      );
+    }
+  };
+
+  const handleViewChange = (newView) => {
+    setView(newView);
+  };
+
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+    setSelectedTimeSlot({
+      date,
+      startTime: '09:00',
+      endTime: '10:00'
+    });
+    setShowEventModal(true);
+  };
+
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+    setShowEventModal(true);
+  };
+
+  const handleTimeSlotClick = (date, hour) => {
+    setSelectedTimeSlot({
+      date,
+      startTime: `${hour.toString().padStart(2, '0')}:00`,
+      endTime: `${(hour + 1).toString().padStart(2, '0')}:00`
+    });
+    setShowEventModal(true);
+  };
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(prev => ({
+      ...prev,
+      ...newFilters
+    }));
+  };
+
+  const handleEventSave = (eventData) => {
+    setEvents(prev => {
+      const existingEventIndex = prev.findIndex(e => e.id === eventData.id);
+      if (existingEventIndex >= 0) {
+        // Update existing event
+        const updatedEvents = [...prev];
+        updatedEvents[existingEventIndex] = eventData;
+        return updatedEvents;
+      } else {
+        // Add new event
+        return [...prev, eventData];
+      }
+    });
+  };
+
+  const handleEventDelete = (eventId) => {
+    setEvents(prev => prev.filter(event => event.id !== eventId));
+  };
+
+  // Filter events based on current filters
+  const getFilteredEvents = useCallback(() => {
+    return events.filter(event => {
+      if (filters.categories.length && !filters.categories.includes(event.category)) {
+        return false;
+      }
+      if (!filters.showCompleted && event.isCompleted) {
+        return false;
+      }
+      return true;
+    });
+  }, [events, filters]);
+
+  // Fetch initial events
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      // setIsLoading(true);
+      try {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const mockEvents = [
+          {
+            id: 1,
+            title: 'Team Meeting',
+            description: 'Weekly team sync',
+            date: new Date(),
+            startTime: '10:00',
+            endTime: '11:00',
+            category: 1,
+            location: 'Conference Room A',
+            isCompleted: false
+          },
+          {
+            id: 2,
+            title: 'Project Deadline',
+            description: 'Submit final deliverables',
+            date: addDays(new Date(), 3),
+            startTime: '15:00',
+            endTime: '16:00',
+            category: 2,
+            location: 'Online',
+            isCompleted: false
+          }
+        ];
+        
+        console.log('Mock events fetched:', mockEvents); // Log the mock data
+      
+        // setEvents(mockEvents); // Set the events state
+      } 
+      catch (err) {
+        setError('Failed to fetch events');
+        console.error('Error fetching events:', err);
+      } 
+      finally {
+        setIsLoading();
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+
+
+
+  
+
+  // Add persistent state for view mode
+  useEffect(() => {
+    const savedView = localStorage.getItem('calendarView');
+    if (savedView) {
+      setView(savedView);
+    }
+  }, []);
+
+  // Save view mode when it changes
+  useEffect(() => {
+    localStorage.setItem('calendarView', view);
+  }, [view]);
+
+  // Render appropriate view
+  const renderView = () => {
+    const filteredEvents = getFilteredEvents();
+
+    switch (view) {
+      case 'month':
+        return (
+          <MonthView
+            currentDate={currentDate}
+            events={filteredEvents}
+            selectedDate={selectedDate}
+            onDateClick={handleDateClick}
+            onEventClick={handleEventClick}
+            categories={CATEGORIES}
+          />
+        );
+      case 'week':
+        return (
+          <WeekView
+            currentDate={currentDate}
+            events={filteredEvents}
+            selectedDate={selectedDate}
+            onDateClick={handleDateClick}
+            onEventClick={handleEventClick}
+            onTimeSlotClick={handleTimeSlotClick}
+            timeSlots={TIME_SLOTS}
+            categories={CATEGORIES}
+          />
+        );
+      case 'day':
+        return (
+          <DayView
+            currentDate={currentDate}
+            events={filteredEvents}
+            onEventClick={handleEventClick}
+            onTimeSlotClick={handleTimeSlotClick}
+            timeSlots={TIME_SLOTS}
+            categories={CATEGORIES}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="calendar-wrapper">
+        <div className="calendar-loading">
+          <div className="loading-spinner"></div>
+          <p>Loading calendar...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="calendar-error">{error}</div>;
+  }
+
+  return (
+    <div className="calendar">
+      <CalendarHeader
+        currentDate={currentDate}
+        view={view}
+        onViewChange={handleViewChange}
+        onDateChange={handleDateChange}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        categories={CATEGORIES}
+      />
+      
+      <div className="calendar-body">
+        {renderView()}
+      </div>
+
+      {showEventModal && (
+        <EventModal
+          event={selectedEvent}
+          timeSlot={selectedTimeSlot}
+          onSave={handleEventSave}
+          onDelete={handleEventDelete}
+          onClose={() => {
+            setShowEventModal(false);
+            setSelectedEvent(null);
+            setSelectedTimeSlot(null);
+          }}
+          categories={CATEGORIES}
+        />
+      )}
+    </div>
+  );
+};
+
+
+
 
 // MonthView Component
 const MonthView = ({ 
@@ -499,280 +782,6 @@ const EventModal = ({
   );
 };
 
-// Main Calendar Component
-const Calendar = () => {
-  // State Management
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [events, setEvents] = useState([]);
-  const [view, setView] = useState('month');
-  const [showEventModal, setShowEventModal] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
-  const [filters, setFilters] = useState({
-    categories: [],
-    showCompleted: true
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  // Constants
-  const CATEGORIES = [
-    { id: 1, name: 'Meeting', color: '#4CAF50' },
-    { id: 2, name: 'Deadline', color: '#f44336' },
-    { id: 3, name: 'Personal', color: '#2196F3' },
-    { id: 4, name: 'Other', color: '#9E9E9E' }
-  ];
-
-  const TIME_SLOTS = Array.from({ length: 24 }, (_, hour) => ({
-    hour,
-    time: format(addHours(startOfMonth(new Date()), hour), 'h:mm a')
-  }));
-
-  // Event Handlers
-  const handleDateChange = (direction) => {
-    if (view === 'month') {
-      setCurrentDate(prev => 
-        direction === 'next' ? addMonths(prev, 1) : subMonths(prev, 1)
-      );
-    } else if (view === 'week') {
-      setCurrentDate(prev => 
-        direction === 'next' ? addDays(prev, 7) : addDays(prev, -7)
-      );
-    } else {
-      setCurrentDate(prev => 
-        direction === 'next' ? addDays(prev, 1) : addDays(prev, -1)
-      );
-    }
-  };
-
-  const handleViewChange = (newView) => {
-    setView(newView);
-  };
-
-  const handleDateClick = (date) => {
-    setSelectedDate(date);
-    setSelectedTimeSlot({
-      date,
-      startTime: '09:00',
-      endTime: '10:00'
-    });
-    setShowEventModal(true);
-  };
-
-  const handleEventClick = (event) => {
-    setSelectedEvent(event);
-    setShowEventModal(true);
-  };
-
-  const handleTimeSlotClick = (date, hour) => {
-    setSelectedTimeSlot({
-      date,
-      startTime: `${hour.toString().padStart(2, '0')}:00`,
-      endTime: `${(hour + 1).toString().padStart(2, '0')}:00`
-    });
-    setShowEventModal(true);
-  };
-
-  const handleFilterChange = (newFilters) => {
-    setFilters(prev => ({
-      ...prev,
-      ...newFilters
-    }));
-  };
-
-  const handleEventSave = (eventData) => {
-    setEvents(prev => {
-      const existingEventIndex = prev.findIndex(e => e.id === eventData.id);
-      if (existingEventIndex >= 0) {
-        // Update existing event
-        const updatedEvents = [...prev];
-        updatedEvents[existingEventIndex] = eventData;
-        return updatedEvents;
-      } else {
-        // Add new event
-        return [...prev, eventData];
-      }
-    });
-  };
-
-  const handleEventDelete = (eventId) => {
-    setEvents(prev => prev.filter(event => event.id !== eventId));
-  };
-
-  // Filter events based on current filters
-  const getFilteredEvents = useCallback(() => {
-    return events.filter(event => {
-      if (filters.categories.length && !filters.categories.includes(event.category)) {
-        return false;
-      }
-      if (!filters.showCompleted && event.isCompleted) {
-        return false;
-      }
-      return true;
-    });
-  }, [events, filters]);
-
-  // Fetch initial events
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      // setIsLoading(true);
-      try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        const mockEvents = [
-          {
-            id: 1,
-            title: 'Team Meeting',
-            description: 'Weekly team sync',
-            date: new Date(),
-            startTime: '10:00',
-            endTime: '11:00',
-            category: 1,
-            location: 'Conference Room A',
-            isCompleted: false
-          },
-          {
-            id: 2,
-            title: 'Project Deadline',
-            description: 'Submit final deliverables',
-            date: addDays(new Date(), 3),
-            startTime: '15:00',
-            endTime: '16:00',
-            category: 2,
-            location: 'Online',
-            isCompleted: false
-          }
-        ];
-        
-        console.log('Mock events fetched:', mockEvents); // Log the mock data
-      
-        // setEvents(mockEvents); // Set the events state
-      } 
-      catch (err) {
-        setError('Failed to fetch events');
-        console.error('Error fetching events:', err);
-      } 
-      finally {
-        setIsLoading();
-      }
-    };
-
-    fetchEvents();
-  }, []);
-
-
-
-
-  
-
-  // Add persistent state for view mode
-  useEffect(() => {
-    const savedView = localStorage.getItem('calendarView');
-    if (savedView) {
-      setView(savedView);
-    }
-  }, []);
-
-  // Save view mode when it changes
-  useEffect(() => {
-    localStorage.setItem('calendarView', view);
-  }, [view]);
-
-  // Render appropriate view
-  const renderView = () => {
-    const filteredEvents = getFilteredEvents();
-
-    switch (view) {
-      case 'month':
-        return (
-          <MonthView
-            currentDate={currentDate}
-            events={filteredEvents}
-            selectedDate={selectedDate}
-            onDateClick={handleDateClick}
-            onEventClick={handleEventClick}
-            categories={CATEGORIES}
-          />
-        );
-      case 'week':
-        return (
-          <WeekView
-            currentDate={currentDate}
-            events={filteredEvents}
-            selectedDate={selectedDate}
-            onDateClick={handleDateClick}
-            onEventClick={handleEventClick}
-            onTimeSlotClick={handleTimeSlotClick}
-            timeSlots={TIME_SLOTS}
-            categories={CATEGORIES}
-          />
-        );
-      case 'day':
-        return (
-          <DayView
-            currentDate={currentDate}
-            events={filteredEvents}
-            onEventClick={handleEventClick}
-            onTimeSlotClick={handleTimeSlotClick}
-            timeSlots={TIME_SLOTS}
-            categories={CATEGORIES}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="calendar-wrapper">
-        <div className="calendar-loading">
-          <div className="loading-spinner"></div>
-          <p>Loading calendar...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div className="calendar-error">{error}</div>;
-  }
-
-  return (
-    <div className="calendar">
-      <CalendarHeader
-        currentDate={currentDate}
-        view={view}
-        onViewChange={handleViewChange}
-        onDateChange={handleDateChange}
-        filters={filters}
-        onFilterChange={handleFilterChange}
-        categories={CATEGORIES}
-      />
-      
-      <div className="calendar-body">
-        {renderView()}
-      </div>
-
-      {showEventModal && (
-        <EventModal
-          event={selectedEvent}
-          timeSlot={selectedTimeSlot}
-          onSave={handleEventSave}
-          onDelete={handleEventDelete}
-          onClose={() => {
-            setShowEventModal(false);
-            setSelectedEvent(null);
-            setSelectedTimeSlot(null);
-          }}
-          categories={CATEGORIES}
-        />
-      )}
-    </div>
-  );
-};
 
 export default Calendar;

@@ -1,0 +1,177 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    margin-left: 42px ;
+    width:95%;
+  }
+  
+  .min-h-screen {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  /* Header */
+  .header {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+  }
+  
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .header-button {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .header-button-icon {
+    height: 16px;
+    width: 16px;
+  }
+  
+  /* Main content */
+  .main {
+    padding: 24px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .tab-button {
+    padding: 8px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  
+  /* Search and Import */
+  .search-import-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .search-container {
+    position: relative;
+    width: 300px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: #9ca3af;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px 8px 8px 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+  }
+  
+  .import-button {
+    padding: 8px 16px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Projects Table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-head th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+  }
+  
+  .table-row td {
+    padding: 8px;
+  }
+  
+  .name-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .name-icon {
+    height: 32px;
+    width: 32px;
+    background-color: #ede9fe;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .name-icon-text {
+    font-size: 14px;
+    color: #7c3aed;
+  }
+  
+  .teams-icon {
+    height: 24px;
+    width: 24px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .teams-text {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .more-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .more-icon {
+    height: 16px;
+    width: 16px;
+  }
+  
+  .footer-text {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  

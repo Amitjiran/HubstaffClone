@@ -1,0 +1,208 @@
+.calendar-header {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .timer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .play-button {
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .play-button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .action-icons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .icon-button {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #6b7280;
+  }
+  
+  .profile-button {
+    width: 2rem;
+    height: 2rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-main h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .actions-button {
+    padding: 0.5rem 1rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .calendar-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .date-navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav-button {
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .date-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+  }
+  
+  .date-range svg {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .today-button {
+    padding: 0.5rem 1rem;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .filter-group label {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  .filter-group select {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    width: 200px;
+  }
+  
+  .events-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+  
+  .events-filter span {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .event-button {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+  }
+  
+  .view-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .view-controls span {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .view-controls select {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    width: 100px;
+  }
+  
+  @media (max-width: 768px) {
+    .calendar-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .events-filter {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+  
+  
