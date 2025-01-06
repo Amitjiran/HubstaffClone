@@ -7,6 +7,7 @@ const TheOrganization = () => {
     const { name, users } = location.state || {}; // Retrieve organization data from state
 
     return (
+        <div>
         <div className="organization-container">
             <h2>Organization Details</h2>
             <p><strong>Organization Name:</strong> {name}</p>
@@ -31,6 +32,14 @@ const TheOrganization = () => {
             ) : (
                 <p>No users assigned.</p>
             )}
+
+            
+        </div>
+
+        <div>
+            <button> Create a new project</button>
+        </div>
+
         </div>
     );
 };

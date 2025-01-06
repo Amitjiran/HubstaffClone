@@ -26,7 +26,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
     { path: '/calendar', name: 'Calendar', icon: <FaCalendarAlt /> },
     { path: '/analytics', name: 'Analytics', icon: <FaChartLine /> },
     { path: '/activity', name: 'Activity', icon: <FaChartLine /> },
-    { path: '/createorganization', name: 'Organization', icon: <FaChartLine /> },
+    { path: '/selectrole', name: 'Organization', icon: <FaChartLine /> },
     { 
       path: '/projectmanagement', 
       name: 'Project management', 
@@ -39,7 +39,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
           icon: <FaChartLine />,
           subItems: [ // Nested subItems for "Tasks" under "Project management"
             { path: '/task/subtask1', name: 'Subtask 1' },
-            { path: '/task/subtask2', name: 'Subtask 2' },
+            { path: '/task/subtask2', name: 'Subtask 2' }, 
           ]
         },
       ]

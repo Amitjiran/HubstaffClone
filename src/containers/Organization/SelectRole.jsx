@@ -51,10 +51,9 @@ const SelectRole = () => {
             <div className="selected-role">
                 {selectedRole && <p>You have selected: {selectedRole}</p>}
             </div>
-
             {selectedRole === 'Organization Manager' && (
                 <div className="create-organization">
-                    <h3>Create Organization</h3>
+                    <h3>Create Organization(org,product manager has rights to create org and projects)</h3>
                     <input
                         type="text"
                         placeholder="Enter organization name"
@@ -67,6 +66,25 @@ const SelectRole = () => {
                     </button>
                 </div>
             )}
+
+
+{selectedRole === 'Product Manager' && (
+                <div className="create-organization">
+                    <h3>Create organization (org,product manager has rights to create org and projects)</h3>
+                    <input
+                        type="text"
+                        placeholder="Enter project name"
+                        value={organizationName}
+                        onChange={handleOrganizationNameChange}
+                        className="organization-input"
+                    />
+                    <button onClick={handleCreateOrganization} className="create-button">
+                        Create Organization
+                    </button>
+                </div>
+            )}
+
+
         </div>
     );
 };

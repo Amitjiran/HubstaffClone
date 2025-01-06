@@ -1,0 +1,41 @@
+.modal-overlay {
+    position: fixed; /* Fixed position to cover the entire screen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex; /* Flexbox to center the modal */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure modal is above other content */
+}
+
+.modal-content {
+    background: #fff; /* White background for the modal */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the modal */
+    width: 400px; /* Fixed width for the modal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.modal-buttons {
+    display: flex; /* Flexbox for buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-top: 20px; /* Space above buttons */
+}
+
+.modal-button {
+    background: #3498db; /* Button color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth background transition */
+    margin-left: 10px; /* Space between buttons */
+}
+
+.modal-button:hover {
+    background: #2980b9; /* Darker shade on hover */
+}

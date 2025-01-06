@@ -175,3 +175,104 @@ body {
     color: #6b7280;
   }
   
+  /* New Project Input Form Styles */
+  .new-project-form {
+    display: flex; /* Flexbox for input fields */
+    flex-wrap: wrap; /* Allow wrapping of input fields */
+    gap: 10px; /* Space between input fields */
+    margin: 20px 0; /* Space above and below the form */
+  }
+  
+  .project-input {
+    flex: 1; /* Allow inputs to grow */
+    min-width: 150px; /* Minimum width for inputs */
+    padding: 10px; /* Padding for inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    transition: border-color 0.3s ease; /* Smooth border transition */
+  }
+  
+  .project-input:focus {
+    border-color: #3498db; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+  }
+
+  .create-project-button{
+    background-color: #2563eb;
+    color: white;
+  }
+  .create-project-button:hover{
+transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: #6790e8;
+  }
+  
+  /* Create Project Button Styles */
+  .create-project-button {
+    background-color: #28a745; /* Green background for the button */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    margin-left: 10px; /* Space between import and create buttons */
+  }
+  
+  /* Create Project Button Hover Effect */
+  .create-project-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+  
+  /* Create Project Button Focus Effect */
+  .create-project-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Add custom focus outline */
+  }
+  
+  /* More Options Dropdown Styles */
+  .more-options {
+    position: relative; /* Position relative for dropdown positioning */
+  }
+  
+  .dropdown {
+    display: inline-block; /* Inline block for dropdown */
+  }
+  
+  .dropdown-button {
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .dropdown-content {
+    display: block; /* Show dropdown when open */
+    position: absolute; /* Position absolute to the parent */
+    right: 0; /* Align to the right */
+    background-color: #fff; /* White background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    z-index: 1000; /* Ensure dropdown is above other content */
+    border-radius: 5px; /* Rounded corners */
+    min-width: 100px; /* Minimum width for dropdown */
+  }
+  
+  .more-button:hover + .dropdown-content,
+  .dropdown-content:hover {
+    display: block; /* Show dropdown on hover */
+  }
+  
+  .dropdown-content button {
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
+    padding: 10px; /* Padding for buttons */
+    width: 100%; /* Full width */
+    text-align: left; /* Align text to the left */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth background transition */
+  }
+  
+  .dropdown-content button:hover {
+    background: #f0f0f0; /* Light gray on hover */
+  }
+  
